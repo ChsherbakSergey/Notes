@@ -140,6 +140,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            tableView.beginUpdates()
             models.remove(at: indexPath.row)
             noteCount -= 1
             DispatchQueue.main.async { [weak self] in
@@ -148,11 +149,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 if self?.noteCount == 1 {
                     self?.numberOfNotesLabel.text = "\(noteCountAgain) Note"
+                } else if self?.noteCount == 0 {
+                    self?.tableView.isHidden = true
+                    self?.noNotesLabel.isHidden = false
+                    self?.numberOfNotesLabel.text = "\(noteCountAgain) Notes"
                 } else {
                     self?.numberOfNotesLabel.text = "\(noteCountAgain) Notes"
                 }
             }
             tableView.deleteRows(at: [indexPath], with: .left)
+            tableView.endUpdates()
         }
     }
     
