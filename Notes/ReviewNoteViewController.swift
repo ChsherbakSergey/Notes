@@ -22,7 +22,15 @@ class ReviewNoteViewController: UIViewController {
     public var noteTitle: String?
     public var note: String?
     public var indexPath = 0
-    var completion: ((String, String) -> Void)?
+    var completion: ((String, String, String) -> Void)?
+    
+    let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy"
+        formatter.dateStyle = .short
+        formatter.string(from: Date())
+        return formatter
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +71,7 @@ class ReviewNoteViewController: UIViewController {
     
     @objc private func didTapAddNoteButton() {
         print("Did tap add note Button")
+        let date = formatter.string(from: Date())
         noteView.resignFirstResponder()
         if titleAgain == noteTitleTextView.text && noteTextAgain == noteView.text {
             return
@@ -73,7 +82,7 @@ class ReviewNoteViewController: UIViewController {
         }
         titleAgain = title
         noteTextAgain = noteText
-        completion?(title, noteText)
+        completion?(title, noteText, date)
     }
     
     @objc private func didTapEditButton() {

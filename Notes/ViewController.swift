@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var numberOfNotesLabel: UILabel!
     var noteCount = 0
     
-    public var models = [(title: String, note: String)]()
+    public var models = [(title: String, note: String, date: String)]()
 //    public var models = [(title: String, note: NSMutableAttributedString)]()
 
     override func viewDidLoad() {
@@ -73,10 +73,10 @@ class ViewController: UIViewController {
         vc.navigationItem.largeTitleDisplayMode = .never
         vc.titleAgain = ""
         vc.noteTextAgain = ""
-        vc.completion = { [weak self] noteTitle, note in
+        vc.completion = { [weak self] noteTitle, note, date in
             self?.noNotesLabel.isHidden = true
             self?.tableView.isHidden = false
-            self?.models.append((noteTitle, note))
+            self?.models.append((noteTitle, note, date))
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
@@ -99,7 +99,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         //Code for working with NSMutableAttributedString
 //        let cellNote = NSMutableAttributedString(attributedString: model.note)
 //        cell.detailTextLabel?.attributedText = cellNote
-        cell.detailTextLabel?.text = model.note
+        cell.detailTextLabel?.text = "\(model.date) \(model.note)"
         cell.detailTextLabel?.textColor = .lightGray
         cell.detailTextLabel?.font = .systemFont(ofSize: 15, weight: .medium)
         return cell
@@ -119,9 +119,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 //        let cellNote = NSMutableAttributedString(attributedString: model.note)
 //        vc.note = cellNote
         vc.note = model.note
-        vc.completion = { [weak self] noteTitle, note in
+        vc.completion = { [weak self] noteTitle, note, date in
             self?.models.remove(at: indexPath.row)
-            self?.models.insert((noteTitle, note), at: indexPath.row)
+            self?.models.insert((noteTitle, note, date), at: indexPath.row)
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }

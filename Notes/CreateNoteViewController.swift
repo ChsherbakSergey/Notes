@@ -16,11 +16,19 @@ class CreateNoteViewController: UIViewController {
     @IBOutlet weak var pencilButton: UIButton!
     @IBOutlet weak var composeButton: UIButton!
     
-    var completion: ((String, String) -> Void)?
+    var completion: ((String, String, String) -> Void)?
 //    var completion: ((String, NSMutableAttributedString) -> Void)?
     
     var titleAgain = ""
     var noteTextAgain = ""
+    
+    let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy"
+        formatter.dateStyle = .short
+        formatter.string(from: Date())
+        return formatter
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +50,7 @@ class CreateNoteViewController: UIViewController {
     }
     
     @objc private func didTapDoneButton() {
+        let date = formatter.string(from: Date())
         noteTextView.resignFirstResponder()
         if titleAgain == titleTextView.text && noteTextAgain == noteTextView.text {
             return
@@ -52,7 +61,7 @@ class CreateNoteViewController: UIViewController {
         }
         titleAgain = title
         noteTextAgain = noteText
-        completion?(title, noteText)
+        completion?(title, noteText, date)
         
         
     }
