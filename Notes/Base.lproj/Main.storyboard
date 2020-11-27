@@ -119,7 +119,7 @@
                                 <rect key="frame" x="15" y="138" width="384" height="658"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="dmS-2L-qTQ">
@@ -197,20 +197,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prf-z0-34m">
-                                <rect key="frame" x="20" y="44" width="374" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="JRq-KX-AuD"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbK-dl-PvG">
-                                <rect key="frame" x="15" y="84" width="384" height="712"/>
+                                <rect key="frame" x="15" y="94" width="384" height="702"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="6w9-aG-Fz3">
@@ -250,27 +241,35 @@
                                     <constraint firstAttribute="height" constant="100" id="6dC-3j-GZg"/>
                                 </constraints>
                             </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9v4-PI-3xD">
+                                <rect key="frame" x="20" y="44" width="374" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Hoc-Rn-rWE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Tr6-eD-tkY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="dbK-dl-PvG" firstAttribute="top" secondItem="prf-z0-34m" secondAttribute="bottom" id="0M6-m0-paw"/>
+                            <constraint firstItem="9v4-PI-3xD" firstAttribute="leading" secondItem="Tr6-eD-tkY" secondAttribute="leading" constant="20" id="73S-9c-ojW"/>
                             <constraint firstItem="6w9-aG-Fz3" firstAttribute="top" secondItem="dbK-dl-PvG" secondAttribute="bottom" id="C3g-DP-JAr"/>
-                            <constraint firstItem="prf-z0-34m" firstAttribute="leading" secondItem="Tr6-eD-tkY" secondAttribute="leading" constant="20" id="CwE-yR-Wrl"/>
                             <constraint firstAttribute="bottom" secondItem="6w9-aG-Fz3" secondAttribute="bottom" id="J96-Us-5kr"/>
                             <constraint firstItem="Tr6-eD-tkY" firstAttribute="trailing" secondItem="dbK-dl-PvG" secondAttribute="trailing" constant="15" id="L9X-kC-6mR"/>
+                            <constraint firstItem="dbK-dl-PvG" firstAttribute="top" secondItem="9v4-PI-3xD" secondAttribute="bottom" id="TPA-Pl-w4w"/>
                             <constraint firstItem="6w9-aG-Fz3" firstAttribute="trailing" secondItem="Tr6-eD-tkY" secondAttribute="trailing" id="dyB-R4-jMs"/>
                             <constraint firstItem="6w9-aG-Fz3" firstAttribute="leading" secondItem="Tr6-eD-tkY" secondAttribute="leading" id="f3l-bJ-eOS"/>
+                            <constraint firstItem="Tr6-eD-tkY" firstAttribute="trailing" secondItem="9v4-PI-3xD" secondAttribute="trailing" constant="20" id="kHq-Ye-Rh5"/>
                             <constraint firstItem="dbK-dl-PvG" firstAttribute="leading" secondItem="Tr6-eD-tkY" secondAttribute="leading" constant="15" id="nf7-5d-3qb"/>
-                            <constraint firstItem="prf-z0-34m" firstAttribute="top" secondItem="Tr6-eD-tkY" secondAttribute="top" id="xj0-ny-OAD"/>
-                            <constraint firstItem="Tr6-eD-tkY" firstAttribute="trailing" secondItem="prf-z0-34m" secondAttribute="trailing" constant="20" id="yBw-dC-t1v"/>
+                            <constraint firstItem="9v4-PI-3xD" firstAttribute="top" secondItem="Tr6-eD-tkY" secondAttribute="top" id="ynK-Z8-4hh"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cameraButton" destination="gjf-9x-isb" id="tRj-6B-Mvn"/>
                         <outlet property="checkmarkButton" destination="Usz-ZL-d4G" id="WO6-CQ-IU3"/>
                         <outlet property="composeButton" destination="qvS-VG-90e" id="uaR-zF-g0A"/>
-                        <outlet property="noteTitleLabel" destination="prf-z0-34m" id="18v-AY-qtk"/>
+                        <outlet property="noteTitleTextView" destination="9v4-PI-3xD" id="Ac1-dZ-SIc"/>
                         <outlet property="noteView" destination="dbK-dl-PvG" id="D2I-AP-Z8e"/>
                         <outlet property="pencilButton" destination="MlG-ck-568" id="VPg-zL-qv8"/>
                     </connections>
